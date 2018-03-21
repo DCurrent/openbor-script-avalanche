@@ -7,15 +7,16 @@
 // for varying needs.
 void dc_draw_grid()
 {
-    #define INCREMENT   10  // What line spaces to draw line and text. Ex: 10 = at every tenth line.
-    #define TEXT_MODE   1   // Show text readout of line position. 1 = Text on.
-    #define SPACING_X   5   // Space from end of line to X start of text.
-    #define SPACING_Y   -5  // Space from end of line to top of text.
-    #define FONT        2   // Font for text.
-    #define COLOR       1   // Color index for line.
-    #define ALPHA       0   // Alpha setting for line.
+    #define INCREMENT       10  // What line spaces to draw line and text. Ex: 10 = at every tenth line.
+    #define TEXT_MODE       1   // Show text readout of line position. 1 = Text on.
+    #define GRID_V_X        0   // Starting position of vertical scale grid lines.
+    #define GRID_V_WIDTH    10  // Horizontal width of vertical scale grid lines.
+    #define SPACING_X       5   // Space from end of line to X start of text.
+    #define SPACING_Y       -5  // Space from end of line to top of text.
+    #define FONT            2   // Font for text.
+    #define COLOR           1   // Color index for line.
+    #define ALPHA           0   // Alpha setting for line.
 
-    int pos_x_start;    // Draw line from here (x axis).
     int pos_x_end;      // End line here.
     int pos_y_start;    // Draw line from here (y axis).
     int pos_y_end;      // End line here.
@@ -34,8 +35,7 @@ void dc_draw_grid()
     // Z will need to be in front of everything.
     pos_z = openborconstant("FRONTPANEL_Z")+20000;
 
-    pos_x_start = 0;
-    pos_x_end = 10;
+    pos_x_end = GRID_V_X + GRID_V_WIDTH;
 
     // Loop each line along vertical axis from top of
     // screen to bottom.
@@ -57,7 +57,7 @@ void dc_draw_grid()
         pos_y_end = i;
 
         // Draw the line.
-        drawline(pos_x_start, pos_y_start, pos_x_end, pos_y_end, pos_z, COLOR, ALPHA);
+        drawline(GRID_V_X, pos_y_start, pos_x_end, pos_y_end, pos_z, COLOR, ALPHA);
 
         // Handle the text.
         if(TEXT_MODE == 1)
@@ -73,6 +73,8 @@ void dc_draw_grid()
 
     #undef INCREMENT
     #undef TEXT_MODE
+    #undef GRID_V_X
+    #undef GRID_V_WIDTH
     #undef SPACING_X
     #undef SPACING_Y
     #undef FONT
