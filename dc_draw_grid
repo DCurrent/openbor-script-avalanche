@@ -42,7 +42,7 @@ void dc_draw_grid()
     for(i=0; i<screen_y; i++)
     {
         // We want to draw a line at 0 and every INCREMENT pixels after.
-        // If we're past 0 and not divisable by INCREMENT, then
+        // If we're past 0 and not divisible by INCREMENT, then
         // exit this increment of the loop to skip drawing.
         if(i > 0)
         {
