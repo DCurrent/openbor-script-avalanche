@@ -72,6 +72,7 @@ void dc_draw_grid()
     }
 
     #undef INCREMENT
+    #undef TEXT_MODE
     #undef SPACING_X
     #undef SPACING_Y
     #undef FONT
